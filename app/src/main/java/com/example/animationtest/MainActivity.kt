@@ -1,9 +1,6 @@
 package com.example.animationtest
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.animation.*
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,12 +21,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //doing animations non targeted (valueAnimator) and targeted (object animator)
-        //either  by attr and by grouping attr s
+        //either  by attr and by grouping attrs
+
+        //so value animator is just basically a Math transformation     R :  t - > y  i.e  y = f(t)  varying on time
+        // when using interpolators  I it is a mappin y = f(x) so we can apply to t these transformations
+        //  so vlaue animator is  R:  t ->  y = In( ...I2(I1(t)))
 
         val tr1: ValueAnimator = ValueAnimator.ofFloat(0f,500f).apply {
-            duration = 1000
+            duration = 700
+            // this is equal to addListener(object:Animator.AnimatorUpdateListener(){ fun onAnimationUpdate()......
+            // depending on the attr you might need to call invalidate()
             addUpdateListener { updatedAnimation ->
-                binding.tvValueAnimatorBasic1.translationX = (updatedAnimation.animatedValue as Float)
+                with(binding.tvValueAnimatorBasic1){
+                    val value = (updatedAnimation.animatedValue as Float)
+                    translationX = value
+                    alpha = value * 2f
+                }
             }
             addListener(object:Animator.AnimatorListener{
                 override fun onAnimationStart(p0: Animator?) {
@@ -62,10 +69,13 @@ class MainActivity : AppCompatActivity() {
             duration = 1000
         }
 
+        /*
+        It is called on value animator
         val alp1:ObjectAnimator = ObjectAnimator.ofFloat(binding.tvValueAnimatorBasic1,"alpha", 0f, 1f).apply {
             duration = 1000
 
         }
+        */
 
         val alp2:ObjectAnimator = ObjectAnimator.ofFloat(binding.tvValueAnimatorBasic2,"alpha", 0f, 1f).apply {
             duration = 1000
@@ -86,9 +96,30 @@ class MainActivity : AppCompatActivity() {
             if(!oa1.isRunning) oa1.start()
         }
 */
-        val animatorList = listOf(tr2 ,tr3)
-        animatorList.forEach { valueAnimator ->
-            valueAnimator.addListener(object:Animator.AnimatorListener{
+        // we can use  Animator.AnimatorListener implementation  and  implement all the methods
+        tr2.addListener(object:Animator.AnimatorListener{
+            override fun onAnimationStart(p0: Animator?) {
+                Log.d(LOG_TAG, "onAnimationStart")
+                (((p0 as? ObjectAnimator)?.target) as? TextView)?.setTextColor(Color.RED)
+            }
+
+            override fun onAnimationEnd(p0: Animator?) {
+                Log.d(LOG_TAG, "onAnimationEnd")
+                (((p0 as? ObjectAnimator)?.target) as? TextView)?.setTextColor(Color.GREEN)
+            }
+
+            override fun onAnimationCancel(p0: Animator?) {
+                Log.d(LOG_TAG, "onAnimationCancel")
+            }
+
+            override fun onAnimationRepeat(p0: Animator?) {
+                Log.d(LOG_TAG, "onAnimationRepeat")
+            }
+
+        })
+        //or we can use an adapter that already have empty overriden methods to just overrid the methods we want
+        tr3.addListener (
+            object : AnimatorListenerAdapter() {
                 override fun onAnimationStart(p0: Animator?) {
                     Log.d(LOG_TAG, "onAnimationStart")
                     (((p0 as? ObjectAnimator)?.target) as? TextView)?.setTextColor(Color.RED)
@@ -99,21 +130,13 @@ class MainActivity : AppCompatActivity() {
                     (((p0 as? ObjectAnimator)?.target) as? TextView)?.setTextColor(Color.GREEN)
                 }
 
-                override fun onAnimationCancel(p0: Animator?) {
-                    Log.d(LOG_TAG, "onAnimationCancel")
-                }
+            }
+        )
 
-                override fun onAnimationRepeat(p0: Animator?) {
-                    Log.d(LOG_TAG, "onAnimationRepeat")
-                }
-
-            })
-
-        }
 
         //As a set
         val animatorSet: AnimatorSet = AnimatorSet().apply {
-            play(tr1).with(alp1)
+            play(tr1)
             play(tr2).with(alp2).after(tr1)
             play(tr3).with(alp3).after(tr2)
         }
