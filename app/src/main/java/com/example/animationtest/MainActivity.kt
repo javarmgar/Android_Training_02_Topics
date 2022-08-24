@@ -2,9 +2,11 @@ package com.example.animationtest
 
 import android.animation.*
 import android.graphics.Color
+import android.graphics.Interpolator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.animation.*
 import android.widget.TextView
 import androidx.core.animation.addListener
 import com.example.animationtest.databinding.ActivityMainBinding
@@ -58,15 +60,17 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
-
+            interpolator = AccelerateDecelerateInterpolator()
         }
 
         val tr2:ObjectAnimator = ObjectAnimator.ofFloat(binding.tvValueAnimatorBasic2,"translationX",0f,800f).apply {
             duration = 1000
+            interpolator = AnticipateOvershootInterpolator()//AccelerateInterpolator()
         }
 
-        val tr3:ObjectAnimator = ObjectAnimator.ofFloat(binding.tvObjectAnimator1,"translationX",650f).apply {
-            duration = 1000
+        val tr3:ObjectAnimator = ObjectAnimator.ofFloat(binding.tvObjectAnimator1,"translationX",0f,650f).apply {
+            duration = 3000
+            interpolator = CycleInterpolator(3f)
         }
 
         /*

@@ -14,7 +14,6 @@
     <transition android:fromId="@id/def" android:toId="@id/pressed">
         <animation-list>
             <item android:duration="1000" android:drawable="@drawable/dt1"/>
-            <item android:duration="1000" android:drawable="@drawable/dt2"/>
         </animation-list>
     </transition>
 </animated-selector>
