@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.animation.*
 import android.widget.TextView
+import androidx.constraintlayout.motion.widget.KeyFrames
 import androidx.core.animation.addListener
 import com.example.animationtest.databinding.ActivityMainBinding
 
@@ -28,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         //so value animator is just basically a Math transformation     R :  t - > y  i.e  y = f(t)  varying on time
         // when using interpolators  I it is a mappin y = f(x) so we can apply to t these transformations
         //  so vlaue animator is  R:  t ->  y = In( ...I2(I1(t)))
-
+        val durationTr1 = 3000L
         val tr1: ValueAnimator = ValueAnimator.ofFloat(0f,500f).apply {
-            duration = 700
+            duration = durationTr1
             // this is equal to addListener(object:Animator.AnimatorUpdateListener(){ fun onAnimationUpdate()......
             // depending on the attr you might need to call invalidate()
             addUpdateListener { updatedAnimation ->
@@ -60,7 +61,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
             })
-            interpolator = AccelerateDecelerateInterpolator()
+            interpolator = TimeInterpolator { x ->
+                (((x + 1f)*(x + 1f)) - 1)/3
+            }
         }
 
         val tr2:ObjectAnimator = ObjectAnimator.ofFloat(binding.tvValueAnimatorBasic2,"translationX",0f,800f).apply {
@@ -148,6 +151,66 @@ class MainActivity : AppCompatActivity() {
         with(binding){
             btnStart.setOnClickListener { if(!animatorSet.isRunning) animatorSet.start() }
             btnCancel.setOnClickListener { animatorSet.cancel() }
+        }
+
+
+        //animation with keyFrames
+
+        /*
+        A key frame object consists  of a time/value that allows define a specific state
+        at a specific time in an animation
+
+        Keyframe_i  -> (has own )   Interpolator_i
+
+         */
+
+        val kf1 = Keyframe.ofFloat(0f, 0f)
+        val kf2 = Keyframe.ofFloat(0.5f, 360f)
+        val kf3 = Keyframe.ofFloat(1f, 0f)
+
+        val phvRotation = PropertyValuesHolder.ofKeyframe("rotation", kf1, kf2, kf3)
+        ObjectAnimator.ofPropertyValuesHolder(binding.btnAnimatorKeyFrame, phvRotation).apply {
+            duration = 5000
+            binding.btnAnimatorKeyFrame.setOnClickListener {
+                if(!this.isRunning) this.start()
+            }
+        }
+
+
+        //we can use propertyvalues holder to apply many attr animation into the same object animator
+
+        //example with muktiple animaotr objects
+
+        /*
+        val animX = ObjectAnimator.ofFloat(myView, "x", 50f)
+        val animY = ObjectAnimator.ofFloat(myView, "y", 100f)
+        AnimatorSet().apply {
+            playTogether(animX, animY)
+            start()
+        }
+         */
+
+        //example in one Object animator using propertyValuesHolder
+        ObjectAnimator.ofPropertyValuesHolder(
+            binding.btnCancel,
+            PropertyValuesHolder.ofFloat("x",500f),
+            PropertyValuesHolder.ofFloat("y",50f)
+
+        ).apply {
+            binding.btnCancel.setOnClickListener{if(!this.isRunning) this.start()}
+        }
+
+
+        //there's another class tool called  ViewPropertyAnimator
+        // views have a method called animate() this method have access to attr properties
+        // they are called as methods an set by caliing those methods
+
+
+        binding.btnViewPropertyAnimator.setOnClickListener { view  ->
+            with(view.animate()){
+                duration = 3000
+                alpha(0f)
+            }
         }
 
     }
