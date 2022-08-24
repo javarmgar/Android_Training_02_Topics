@@ -69,8 +69,8 @@
         android:layout_marginTop="20dp"/>
 
     <Button
-        android:text="animation"
-        android:backgroundTint="@xml/my_anim_state_drawable"
+        android:text="n"
+        android:background="@xml/my_anim_state_drawable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
