@@ -3,6 +3,8 @@ package com.example.animationtest
 import android.animation.*
 import android.graphics.Color
 import android.graphics.Interpolator
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -213,5 +215,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.ivAnimatedVector.setOnClickListener {
+            it.setBackgroundResource(R.drawable.animated_vector_drawble)
+            (it.background as AnimatedVectorDrawable).apply {
+                if(!this.isRunning) this.start()
+            }
+        }
     }
 }

@@ -89,6 +89,16 @@
         app:layout_constraintTop_toBottomOf="@id/btn_animator_key_frame"
         android:layout_marginTop="50dp"/>
 
+    <ImageView
+        android:id="@+id/iv_animated_vector"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:background="#1B000000"
+        app:layout_constraintTop_toBottomOf="@id/btn_view_property_animator"/>
+
     <Button
         android:text="n"
         android:background="@xml/my_anim_state_drawable"
@@ -98,6 +108,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="20dp"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
