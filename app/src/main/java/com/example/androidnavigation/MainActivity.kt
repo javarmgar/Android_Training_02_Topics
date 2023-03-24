@@ -14,12 +14,14 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        findViewById<Button>(R.id.btn_fragment_1).setOnClickListener {
-            navController.navigate(R.id.fragmentOne)
+        findViewById<Button>(R.id.btn_fragment_2).setOnClickListener {
+            val action = FragmentOneDirections.actionFragmentOneToFragmentTwo()
+            navController.navigate(action)
         }
 
-        findViewById<Button>(R.id.btn_fragment_2).setOnClickListener {
-            navController.navigate(R.id.fragmentTwo)
+        findViewById<Button>(R.id.btn_fragment_1).setOnClickListener {
+            val action = FragmentTwoDirections.actionFragmentTwoToFragmentOne()
+            navController.navigate(action)
         }
     }
 
