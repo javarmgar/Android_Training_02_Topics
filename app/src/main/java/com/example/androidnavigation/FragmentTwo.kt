@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +39,17 @@ class FragmentTwo : Fragment() {
         return inflater.inflate(R.layout.fragment_two, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val btnSecondActivity = view.findViewById<Button>(R.id.btn_second_activity)
+        btnSecondActivity.setOnClickListener {
+            val navController = findNavController()
+            if(navController.currentDestination?.id == R.id.fragmentTwo){
+                navController.navigate(R.id.secondActivity)
+            }
+        }
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
