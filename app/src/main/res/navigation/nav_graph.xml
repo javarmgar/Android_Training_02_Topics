@@ -31,5 +31,13 @@
         android:name="com.example.androidnavigation.SecondActivity"
         android:label="activity_second"
         tools:layout="@layout/activity_second" />
+    <dialog
+        android:id="@+id/myDialogFragment"
+        android:name="com.example.androidnavigation.MyDialogFragment"
+        android:label="MyDialogFragment" >
+        <action
+            android:id="@+id/action_myDialogFragment_to_secondActivity"
+            app:destination="@id/secondActivity" />
+    </dialog>
 
 </navigation>

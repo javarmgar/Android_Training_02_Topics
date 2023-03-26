@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
             val action = FragmentTwoDirections.actionFragmentTwoToFragmentOne()
             navController.navigate(action)
         }
+/*
+        findViewById<Button>(R.id.btn_fragment_2).setOnClickListener {
+            if(navController.currentDestination?.id != R.id.fragmentTwo)
+                navController.navigate(R.id.myDialogFragment)
+        }*/
     }
 
 }

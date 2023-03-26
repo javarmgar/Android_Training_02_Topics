@@ -2,4 +2,7 @@
     <string name="app_name">androidNavigation</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="place_holder_dialog_fragment">Hello I am a DialogFragment</string>
+    <string name="ok">Ok</string>
+
 </resources>
