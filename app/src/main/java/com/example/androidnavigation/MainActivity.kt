@@ -15,13 +15,21 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         findViewById<Button>(R.id.btn_fragment_2).setOnClickListener {
-            val action = FragmentOneDirections.actionFragmentOneToFragmentTwo()
-            navController.navigate(action)
+            with(navController){
+                if(currentDestination?.id != R.id.fragmentTwo){
+                    val action = FragmentOneDirections.actionFragmentOneToFragmentTwo()
+                    navController.navigate(action)
+                }
+            }
         }
 
         findViewById<Button>(R.id.btn_fragment_1).setOnClickListener {
-            val action = FragmentTwoDirections.actionFragmentTwoToFragmentOne()
-            navController.navigate(action)
+            with(navController){
+                if(currentDestination?.id != R.id.fragmentOne){
+                    val action = FragmentTwoDirections.actionFragmentTwoToFragmentOne()
+                    navController.navigate(action)
+                }
+            }
         }
 /*
         findViewById<Button>(R.id.btn_fragment_2).setOnClickListener {

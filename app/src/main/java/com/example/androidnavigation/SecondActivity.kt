@@ -13,9 +13,16 @@ class SecondActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        findViewById<Button>(R.id.btn_dialog_fragment).setOnClickListener {
-            MyDialogFragment().show(supportFragmentManager, MyDialogFragment.TAG)
-        }
 
+        /*findViewById<Button>(R.id.btn_dialog_fragment).setOnClickListener {
+            with(navController){
+                if(navController.currentDestination?.id == R.id.secondActivity){
+                 navigate(R.id.myDialogFragment)
+                }
+            }
+        }*/
+        findViewById<Button>(R.id.btn_dialog_fragment).setOnClickListener {
+            MyDialogFragment().show(supportFragmentManager,MyDialogFragment.TAG)
+        }
     }
 }
