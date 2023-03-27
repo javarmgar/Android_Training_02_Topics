@@ -39,5 +39,20 @@
             android:id="@+id/action_myDialogFragment_to_secondActivity"
             app:destination="@id/secondActivity" />
     </dialog>
+    <activity
+        android:id="@+id/url_chatgpt"
+        app:action="android.intent.action.VIEW"
+        app:data="https://chat.openai.com/chat" />
+
+    <activity
+        android:id="@+id/activity_url_youtube"
+        app:action="android.intent.action.VIEW"
+        app:dataPattern="https://www.youtube.com/watch?v={videoId}"
+        >
+        <argument
+            android:name="videoId"
+            app:argType="string"/>
+    </activity>
+
 
 </navigation>
