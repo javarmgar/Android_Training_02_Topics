@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidNavigationComponent2</string>
+    <string name="hello_main_activity">Hello MainFragment activity</string>
+    <string name="hello_main_fragment">Hello MainFragment fragment</string>
+    <string name="hello_view_balance_fragment">Hello ViewBalanceFragment fragment</string>
+    <string name="hello_choose_recipient_fragment">Hello ChooseRecipient fragment</string>
+    <string name="hello_choose_amount_fragment">Hello ChooseAmountFragment fragment</string>
+
+</resources>
