@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.findNavController
 
 
 class MainFragment : Fragment() {
+
+    private val LOG_TAG = "NAVIGATION_COMPONENT_TAG"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,16 +32,24 @@ class MainFragment : Fragment() {
         with(view){
             findViewById<Button>(R.id.btn_goto_viewBalanceFragment).setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == com.example.androidnavigationcomponent2.R.id.mainFragment){
-                        navigate(com.example.androidnavigationcomponent2.R.id.viewBalanceFragment)
+                    if(currentDestination?.id == R.id.mainFragment){
+                        navigate(R.id.viewBalanceFragment)
                     }
                 }
             }
 
             findViewById<Button>(R.id.btn_goto_sendMoneyGraph).setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == com.example.androidnavigationcomponent2.R.id.mainFragment){
-                        navigate(com.example.androidnavigationcomponent2.R.id.action_mainFragment_to_sendMoneyGraph)
+                    if(currentDestination?.id == R.id.mainFragment){
+                        navigate(R.id.action_mainFragment_to_sendMoneyGraph)
+                    }
+                }
+            }
+
+            findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
+                with(findNavController()){
+                    if(currentDestination?.id == R.id.mainFragment){
+                        Toast.makeText(this.context,"${LOG_TAG}You are al ready in the screen", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

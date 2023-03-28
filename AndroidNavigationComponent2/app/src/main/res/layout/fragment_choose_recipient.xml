@@ -29,5 +29,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_hello_choose_recipient_fragment"/>
 
+    <Button
+        android:id="@+id/btn_global_action_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="GLOBAL ACTION  GOTO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_goto_chooseAmountFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

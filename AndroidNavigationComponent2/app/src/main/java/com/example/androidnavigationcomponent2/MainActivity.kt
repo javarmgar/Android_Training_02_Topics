@@ -3,6 +3,7 @@ package com.example.androidnavigationcomponent2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,5 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         navController.navigate(R.id.mainFragment)
-
     }
 }
