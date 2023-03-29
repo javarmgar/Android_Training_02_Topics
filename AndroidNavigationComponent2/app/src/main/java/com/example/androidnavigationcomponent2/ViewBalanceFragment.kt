@@ -30,18 +30,14 @@ class ViewBalanceFragment : Fragment() {
         with(view){
             findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == R.id.viewBalanceFragment){
-                        val action = ViewBalanceFragmentDirections.actionGlobalMainFragment()
-                        navigate(action)
-                    }
+                    val action = ViewBalanceFragmentDirections.actionGlobalMainFragment()
+                    navigate(action)
                 }
             }
             findViewById<Button>(R.id.btn_animation_fragment).setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == R.id.viewBalanceFragment){
-                        val action = ViewBalanceFragmentDirections.actionViewBalanceFragmentToAnimationFragment()
-                        navigate(action)
-                    }
+                    val action = ViewBalanceFragmentDirections.actionViewBalanceFragmentToAnimationFragment()
+                    navigate(action)
                 }
             }
         }

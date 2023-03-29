@@ -30,10 +30,8 @@ class ChooseAmountFragment : Fragment() {
         with(view){
             findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == R.id.chooseAmountFragment){
-                        val action: NavDirections = ChooseAmountFragmentDirections.actionGlobalMainFragment()
-                        navigate(action)
-                    }
+                    val action: NavDirections = ChooseAmountFragmentDirections.actionGlobalMainFragment()
+                    navigate(action)
                 }
             }
         }

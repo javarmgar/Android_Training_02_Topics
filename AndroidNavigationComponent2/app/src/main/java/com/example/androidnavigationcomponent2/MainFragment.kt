@@ -13,6 +13,9 @@ import androidx.navigation.navOptions
 
 class MainFragment : Fragment() {
 
+    private lateinit var btnGlobalActionStart: Button
+    private lateinit var btnGotoSendMoneyGraph: Button
+    private lateinit var btnGotoViewBalanceFragment: Button
     private val LOG_TAG = "NAVIGATION_COMPONENT_TAG"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,40 +26,44 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+
+        val view:View = inflater.inflate(R.layout.fragment_main, container, false)
+
+        btnGotoViewBalanceFragment =  view.findViewById(R.id.btn_goto_viewBalanceFragment)
+
+        btnGotoSendMoneyGraph = view.findViewById(R.id.btn_goto_sendMoneyGraph)
+
+        btnGlobalActionStart = view.findViewById(R.id.btn_global_action_start)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(view){
-            findViewById<Button>(R.id.btn_goto_viewBalanceFragment).setOnClickListener {
+            btnGotoViewBalanceFragment.setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == R.id.mainFragment){
-                        val action = MainFragmentDirections.actionMainFragmentToViewBalanceFragment()
-                        navigate(action,
-                            navOptions {
-                                anim {
-                                    enter = android.R.animator.fade_in
-                                    exit = android.R.animator.fade_out
-                                }
+                    val action = MainFragmentDirections.actionMainFragmentToViewBalanceFragment()
+                    navigate(action,
+                        navOptions {
+                            anim {
+                                enter = android.R.animator.fade_in
+                                exit = android.R.animator.fade_out
                             }
-                        )
-                    }
+                        }
+                    )
                 }
             }
 
-            findViewById<Button>(R.id.btn_goto_sendMoneyGraph).setOnClickListener {
+            btnGotoSendMoneyGraph.setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == R.id.mainFragment){
-                        val action = MainFragmentDirections.actionMainFragmentToSendMoneyGraph()
-                        navigate(action)
-                    }
+                    val action = MainFragmentDirections.actionMainFragmentToSendMoneyGraph()
+                    navigate(action)
                 }
             }
 
-            findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
+            btnGlobalActionStart.setOnClickListener {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.mainFragment){
                         Toast.makeText(this.context,"${LOG_TAG}You are al ready in the screen", Toast.LENGTH_SHORT).show()

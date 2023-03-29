@@ -30,18 +30,14 @@ class ChooseRecipient : Fragment() {
         with(view){
             findViewById<Button>(R.id.btn_goto_chooseAmountFragment).setOnClickListener {
                 findNavController().apply {
-                    if(currentDestination?.id == R.id.chooseRecipient){
-                        val action = ChooseRecipientDirections.actionChooseRecipientToChooseAmountFragment()
-                        navigate(action)
-                    }
+                    val action = ChooseRecipientDirections.actionChooseRecipientToChooseAmountFragment()
+                    navigate(action)
                 }
             }
             findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
                 with(findNavController()){
-                    if(currentDestination?.id == R.id.chooseRecipient){
-                        val action = ChooseRecipientDirections.actionGlobalMainFragment()
-                        navigate(action)
-                    }
+                    val action = ChooseRecipientDirections.actionGlobalMainFragment()
+                    navigate(action)
                 }
             }
         }
