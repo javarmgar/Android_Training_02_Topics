@@ -36,6 +36,14 @@ class ViewBalanceFragment : Fragment() {
                     }
                 }
             }
+            findViewById<Button>(R.id.btn_animation_fragment).setOnClickListener {
+                with(findNavController()){
+                    if(currentDestination?.id == R.id.viewBalanceFragment){
+                        val action = ViewBalanceFragmentDirections.actionViewBalanceFragmentToAnimationFragment()
+                        navigate(action)
+                    }
+                }
+            }
         }
     }
 

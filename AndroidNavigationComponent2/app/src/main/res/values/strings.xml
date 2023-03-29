@@ -5,5 +5,7 @@
     <string name="hello_view_balance_fragment">Hello ViewBalanceFragment fragment</string>
     <string name="hello_choose_recipient_fragment">Hello ChooseRecipient fragment</string>
     <string name="hello_choose_amount_fragment">Hello ChooseAmountFragment fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

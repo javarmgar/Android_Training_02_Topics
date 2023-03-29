@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 
 
@@ -30,7 +31,7 @@ class ChooseAmountFragment : Fragment() {
             findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.chooseAmountFragment){
-                        val action = ChooseAmountFragmentDirections.actionGlobalMainFragment()
+                        val action: NavDirections = ChooseAmountFragmentDirections.actionGlobalMainFragment()
                         navigate(action)
                     }
                 }

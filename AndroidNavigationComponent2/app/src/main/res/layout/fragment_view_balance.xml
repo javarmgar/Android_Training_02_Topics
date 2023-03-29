@@ -5,7 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewBalanceFragment">
+    tools:context=".ViewBalanceFragment"
+    android:background="@color/purple_200"
+    >
 
     <TextView
         android:id="@+id/tv_hello_view_balance_fragment"
@@ -25,5 +27,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_hello_view_balance_fragment" />
+
+    <Button
+        android:id="@+id/btn_animation_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="ANIMATION FRAGMENT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_global_action_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

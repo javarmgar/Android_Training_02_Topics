@@ -26,7 +26,25 @@
         android:id="@+id/viewBalanceFragment"
         android:name="com.example.androidnavigationcomponent2.ViewBalanceFragment"
         android:label="fragment_view_balance"
-        tools:layout="@layout/fragment_view_balance" />
+        tools:layout="@layout/fragment_view_balance" >
+        <action
+            android:id="@+id/action_viewBalanceFragment_to_animationFragment"
+            app:destination="@id/animationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/animationFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.example.androidnavigationcomponent2.AnimationFragment"
+        android:label="fragment_animation"
+        tools:layout="@layout/fragment_animation" />
+
     <navigation
         android:id="@+id/sendMoneyGraph"
         app:startDestination="@id/chooseRecipient">
@@ -45,4 +63,5 @@
             android:label="fragment_choose_amount"
             tools:layout="@layout/fragment_choose_amount" />
     </navigation>
+
 </navigation>

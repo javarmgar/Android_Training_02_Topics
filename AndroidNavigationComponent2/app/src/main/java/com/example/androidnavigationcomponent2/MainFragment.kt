@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.navigation.navOptions
 
 
 class MainFragment : Fragment() {
@@ -34,7 +35,14 @@ class MainFragment : Fragment() {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.mainFragment){
                         val action = MainFragmentDirections.actionMainFragmentToViewBalanceFragment()
-                        navigate(action)
+                        navigate(action,
+                            navOptions {
+                                anim {
+                                    enter = android.R.animator.fade_in
+                                    exit = android.R.animator.fade_out
+                                }
+                            }
+                        )
                     }
                 }
             }
