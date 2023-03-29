@@ -10,7 +10,6 @@
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true"/>
 
-
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.androidnavigationcomponent2.MainFragment"

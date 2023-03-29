@@ -30,7 +30,8 @@ class ChooseAmountFragment : Fragment() {
             findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.chooseAmountFragment){
-                        navigate(R.id.action_global_mainFragment)
+                        val action = ChooseAmountFragmentDirections.actionGlobalMainFragment()
+                        navigate(action)
                     }
                 }
             }
@@ -40,7 +41,7 @@ class ChooseAmountFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             ChooseAmountFragment().apply {
             }
     }

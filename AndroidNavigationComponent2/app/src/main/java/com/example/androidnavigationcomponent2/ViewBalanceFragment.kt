@@ -31,7 +31,8 @@ class ViewBalanceFragment : Fragment() {
             findViewById<Button>(R.id.btn_global_action_start).setOnClickListener {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.viewBalanceFragment){
-                        navigate(R.id.action_global_mainFragment)
+                        val action = ViewBalanceFragmentDirections.actionGlobalMainFragment()
+                        navigate(action)
                     }
                 }
             }

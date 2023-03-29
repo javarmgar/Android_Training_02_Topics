@@ -33,7 +33,8 @@ class MainFragment : Fragment() {
             findViewById<Button>(R.id.btn_goto_viewBalanceFragment).setOnClickListener {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.mainFragment){
-                        navigate(R.id.viewBalanceFragment)
+                        val action = MainFragmentDirections.actionMainFragmentToViewBalanceFragment()
+                        navigate(action)
                     }
                 }
             }
@@ -41,7 +42,8 @@ class MainFragment : Fragment() {
             findViewById<Button>(R.id.btn_goto_sendMoneyGraph).setOnClickListener {
                 with(findNavController()){
                     if(currentDestination?.id == R.id.mainFragment){
-                        navigate(R.id.action_mainFragment_to_sendMoneyGraph)
+                        val action = MainFragmentDirections.actionMainFragmentToSendMoneyGraph()
+                        navigate(action)
                     }
                 }
             }
